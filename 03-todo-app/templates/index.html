@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+</head>
+<body>
+
+    <h1>My To-Do List</h1>
+
+
+   <form action="/" method="post">
+        <input type="text" name="task" placeholder="Enter a task">
+        <button type="submit">Add Task</button>
+   </form>
+
+<p>You have {{tasks|length}} tasks</p>
+   {% if tasks %}
+    <ul>
+    {% for task in tasks %}
+        <li>
+            {{ task.title }}
+
+            {% if task.completed %}
+                - Completed
+            {% else %}
+                - Not completed
+
+                <form action="{{url_for('completed_task',task_id=loop.index0)}}" method="post">
+                    <button type="submit">Complete</button>
+                </form>
+
+                <form action="{{ url_for('delete_task', task_id=loop.index0) }}" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+{% else %}
+    <p>No tasks yet.</p>
+{% endif %}
+
+
+</body>
+</html>
