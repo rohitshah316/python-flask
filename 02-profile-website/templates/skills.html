@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+{%block title%}
+Skills
+{%endblock%}
+
+{%block content%}
+    <ul>
+        {%if skills%}
+        {%for skill in skills%}
+            <li>{{skill}}</li>
+        {%endfor%}
+        {%else%}
+        <p>I have skill issue.</p>
+    {%endif%}
+    </ul>
+{%endblock%}

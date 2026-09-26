@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+Projects
+{% endblock %}
+
+{% block content %}
+
+<h1>My Projects</h1>
+
+{% if projects %}
+    <p>I have some projects to show you.</p>
+
+    <ul>
+        {% for project in projects %}
+            <li>{{ project }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>I don't have any projects yet.</p>
+{% endif %}
+
+{% endblock %}
+
